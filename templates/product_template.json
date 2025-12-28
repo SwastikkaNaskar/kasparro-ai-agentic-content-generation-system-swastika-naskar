@@ -1,0 +1,16 @@
+{
+  "page_type": "Product Page",
+  "description": "Template for product detail page",
+  "sections": {
+    "overview": "string",
+    "ingredients": "list",
+    "benefits": "object",
+    "usage": "object",
+    "price": "number"
+  },
+  "dependencies": [
+    "benefits_block",
+    "usage_block",
+    "safety_block"
+  ]
+}

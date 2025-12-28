@@ -1,0 +1,14 @@
+{
+  "page_type": "Comparison Page",
+  "description": "Template for comparing two products",
+  "compare_on": [
+    "ingredients",
+    "benefits",
+    "price"
+  ],
+  "rules": [
+    "Second product must be fictional",
+    "Structure must match primary product"
+  ]
+}
+

@@ -1,0 +1,26 @@
+{
+  "page_type": "Comparison Page",
+  "products": {
+    "GlowBoost Vitamin C Serum": {
+      "ingredients": [
+        "Vitamin C",
+        "Hyaluronic Acid"
+      ],
+      "benefits": [
+        "Brightening",
+        "Fades dark spots"
+      ],
+      "price": 699
+    },
+    "RadiantFix Serum": {
+      "name": "RadiantFix Serum",
+      "ingredients": [
+        "Niacinamide"
+      ],
+      "benefits": [
+        "Oil control"
+      ],
+      "price": 599
+    }
+  }
+}

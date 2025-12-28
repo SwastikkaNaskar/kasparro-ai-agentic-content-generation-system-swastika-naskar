@@ -1,0 +1,14 @@
+{
+  "page_type": "FAQ",
+  "description": "Template for frequently asked questions",
+  "fields": [
+    {
+      "question": "string",
+      "answer": "string"
+    }
+  ],
+  "rules": [
+    "Answers must be generated only using logic blocks",
+    "No external data allowed"
+  ]
+}
