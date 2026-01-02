@@ -76,10 +76,11 @@ Agents generate content strictly according to these templates, ensuring consiste
 machine-readability.
 
 
-4.5 Automation & Orchestration
-The entire system is executed via a single orchestrator (`main.py`). Running the pipeline
-automatically generates all required pages as JSON files in the output directory, proving
-end-to-end automation.
+4.5 Agent Automation & Orchestration
+The system is implemented as a task-driven agentic architecture.
+Each agent independently determines whether it can handle a task
+via a shared interface. The orchestrator dynamically routes tasks
+and maintains shared context, avoiding static execution flow.
 
 
 5. Output Format

@@ -1,19 +1,19 @@
-class FAQAgent:
-    """
-    Responsibility:
-    - Generate FAQ page JSON using questions + logic blocks
-    """
+from agents.base_agent import BaseAgent
 
-    def run(self, questions, logic):
-        faq_items = []
+class FAQAgent(BaseAgent):
+    def __init__(self):
+        super().__init__("FAQAgent")
 
-        for question in questions["informational"][:5]:
-            faq_items.append({
-                "question": question,
-                "answer": logic["benefits"]["summary"]
+    def can_handle(self, task):
+        return task["type"] == "GENERATE_FAQ"
+
+    def handle(self, task, context):
+        faqs = []
+        for q in context["questions"]["informational"]:
+            faqs.append({
+                "question": q,
+                "answer": "Answer based on product benefits."
             })
 
-        return {
-            "page_type": "FAQ",
-            "items": faq_items
-        }
+        context["faq"] = faqs
+        return {"faq": faqs}

@@ -1,16 +1,22 @@
-class ProductPageAgent:
-    """
-    Responsibility:
-    - Generate product detail page JSON
-    """
+from agents.base_agent import BaseAgent
 
-    def run(self, product, logic):
-        return {
-            "page_type": "Product Page",
+class ProductPageAgent(BaseAgent):
+    def __init__(self):
+        super().__init__("ProductPageAgent")
+
+    def can_handle(self, task):
+        return task["type"] == "GENERATE_PRODUCT_PAGE"
+
+    def handle(self, task, context):
+        product = context["product"]
+
+        page = {
             "name": product["name"],
-            "overview": f"{product['concentration']} Vitamin C serum for {', '.join(product['skin_type'])} skin.",
             "ingredients": product["ingredients"],
-            "benefits": logic["benefits"],
-            "usage": logic["usage"],
+            "benefits": product["benefits"],
+            "usage": product["usage"],
             "price": product["price"]
         }
+
+        context["product_page"] = page
+        return {"product_page": page}

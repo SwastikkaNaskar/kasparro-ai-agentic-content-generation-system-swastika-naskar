@@ -1,25 +1,23 @@
-class ComparisonAgent:
-    """
-    Responsibility:
-    - Compare GlowBoost with a fictional product
-    """
+from agents.base_agent import BaseAgent
 
-    def run(self, product):
-        fictional_product = {
-            "name": "RadiantFix Serum",
-            "ingredients": ["Niacinamide"],
-            "benefits": ["Oil control"],
-            "price": 599
-        }
+class ComparisonAgent(BaseAgent):
+    def __init__(self):
+        super().__init__("ComparisonAgent")
 
-        return {
-            "page_type": "Comparison Page",
-            "products": {
-                product["name"]: {
-                    "ingredients": product["ingredients"],
-                    "benefits": product["benefits"],
-                    "price": product["price"]
-                },
-                fictional_product["name"]: fictional_product
+    def can_handle(self, task):
+        return task["type"] == "GENERATE_COMPARISON"
+
+    def handle(self, task, context):
+        product = context["product"]
+
+        comparison = {
+            "primary": product["name"],
+            "secondary": "Fictional Serum",
+            "price": {
+                product["name"]: product["price"],
+                "Fictional Serum": product["price"] + 200
             }
         }
+
+        context["comparison"] = comparison
+        return {"comparison": comparison}

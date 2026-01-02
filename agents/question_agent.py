@@ -1,35 +1,27 @@
-class QuestionGeneratorAgent:
-    """
-    Responsibility:
-    - Generate categorized user questions from product data
-    """
+from agents.base_agent import BaseAgent
 
-    def run(self, product):
+class QuestionGeneratorAgent(BaseAgent):
+    def __init__(self):
+        super().__init__("QuestionGeneratorAgent")
+
+    def can_handle(self, task):
+        return task["type"] == "GENERATE_QUESTIONS"
+
+    def handle(self, task, context):
+        product = context["product"]
+
         questions = {
             "informational": [
-                f"What is {product['name']}?",
-                f"What does {product['concentration']} Vitamin C indicate?"
+                f"What are the benefits of {product['name']}?"
             ],
             "usage": [
-                "How should this serum be applied?",
-                "When is the best time to use this product?",
-                "Can it be used daily?"
+                f"How do I use {product['name']}?"
             ],
             "safety": [
-                "Does this product cause side effects?",
-                "Is it suitable for sensitive skin?",
-                "Should a patch test be done?"
-            ],
-            "purchase": [
-                "What is the price of this serum?",
-                "Is this product worth its cost?",
-                "Who should buy this serum?"
-            ],
-            "comparison": [
-                "How does this serum compare to other vitamin C serums?",
-                "What makes this serum different?"
+                f"Are there side effects of {product['name']}?"
             ]
         }
 
-        return questions
+        context["questions"] = questions
+        return {"questions": questions}
    
